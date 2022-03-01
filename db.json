@@ -1,0 +1,16 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "priyansh sharma",
+      "email": "priyansh@gmail.com",
+      "phone": "8827611875"
+    },
+    {
+      "name": "Manvi sharma",
+      "email": "manvi@gmail.com",
+      "phone": "8827611875",
+      "id": 2
+    }
+  ]
+}
