@@ -6,12 +6,14 @@ const initialState = {
       name: "priyansh sharma",
       email: "priyansh@gmail.com",
       phone: "8827611875",
+      group: "Family",
     },
     {
       id: 2,
       name: "Manvi sharma",
       email: "manvi@gmail.com",
       phone: "8827611875",
+      group: "Family",
     },
   ],
 };

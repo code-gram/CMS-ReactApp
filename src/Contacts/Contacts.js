@@ -2,7 +2,11 @@ import React from "react";
 import Button from "../UI/Button";
 import classes from "./Contacts.module.css";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ContactRecord from "./ContactRecord";
 const Contacts = (props) => {
+  const { contacts } = useSelector((state) => state.contacts);
+  console.log(contacts);
   return (
     <section className={classes["main-area"]}>
       <div className={classes["section-contacts"]}>
@@ -25,32 +29,16 @@ const Contacts = (props) => {
             <th>Edit</th>
             <th>Delete</th>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>Pankaj</td>
-            <td>8827611875</td>
-            <td>pankaj@gmail.com</td>
-            <td>Family</td>
-            <td>
-              <i class="fa-solid fa-pencil"></i>
-            </td>
-            <td>
-              <i class="fa-solid fa-trash"></i>
-            </td>
-          </tr>
-          <tr>
-            <td>1</td>
-            <td>Pankaj</td>
-            <td>8827611875</td>
-            <td>pankaj@gmail.com</td>
-            <td>Family</td>
-            <td>
-              <i class="fa-solid fa-pencil"></i>
-            </td>
-            <td>
-              <i class="fa-solid fa-trash"></i>
-            </td>
-          </tr>
+
+          {contacts.map((contact, index) => {
+            return (
+              <ContactRecord
+                key={contact.id}
+                contact={contact}
+                srNo={index + 1}
+              />
+            );
+          })}
         </table>
       </div>
     </section>
