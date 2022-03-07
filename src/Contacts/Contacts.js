@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Button from "../UI/Button";
 import classes from "./Contacts.module.css";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import ContactRecord from "./ContactRecord";
+import axios from "axios";
+import { getContacts } from "../redux/actions/contactActions";
 const Contacts = (props) => {
   const { contacts } = useSelector((state) => state.contacts);
-  console.log(contacts);
+  const dispatch = useDispatch();
+  const fetchContacts = async () => {
+    const response = await axios
+      .get("http://localhost:3000/contacts")
+      .catch((err) => {
+        console.log("Error : ", err);
+      });
+    // console.log(response.data);
+    dispatch(getContacts(response.data));
+  };
+  // console.log(contacts);
+  useEffect(() => {
+    fetchContacts();
+  }, []);
   return (
     <section className={classes["main-area"]}>
       <div className={classes["section-contacts"]}>

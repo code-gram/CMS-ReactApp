@@ -1,16 +1,32 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "name": "priyansh sharma",
-      "email": "priyansh@gmail.com",
-      "phone": "8827611875"
+      "id": "431ec6de-3149-4c2a-a280-7d62b1f3ef06",
+      "name": "pankaj sharma",
+      "phone": "8827611875",
+      "email": "pankajsimmc@gmail.com",
+      "group": "family"
     },
     {
-      "name": "Manvi sharma",
-      "email": "manvi@gmail.com",
+      "id": "3dacb6bf-e107-4251-b16e-572cabc72cf2",
+      "name": "Priyansh Sharma",
+      "phone": "8248519323",
+      "email": "priyansh@gmail.com",
+      "group": "friend"
+    },
+    {
+      "id": "6dbf0df3-0f42-4503-814f-f46388686e43",
+      "name": "Manvi",
       "phone": "8827611875",
-      "id": 2
+      "email": "manvi@gmail.com",
+      "group": "friend"
+    },
+    {
+      "id": "494e40db-cac0-4561-bcbc-66ae2637e4e7",
+      "name": "Neeraj",
+      "phone": "9793279797",
+      "email": "neeraj@gmail.com",
+      "group": "family"
     }
   ]
 }

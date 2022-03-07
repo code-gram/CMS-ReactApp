@@ -1,12 +1,19 @@
 import React, { useState } from "react";
 import classes from "./ContactForm.module.css";
 import Button from "./../UI/Button";
+import { useDispatch } from "react-redux";
+import { addContact } from "./../redux/actions/contactActions";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { v4 as uuid } from "uuid";
 
 const ContactForm = (props) => {
   const [enteredName, setEnteredName] = useState("");
   const [enteredContact, setEnteredContact] = useState("");
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredGroup, setEnteredGroup] = useState("");
+  const dispatch = useDispatch();
+  let navigate = useNavigate();
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -21,15 +28,30 @@ const ContactForm = (props) => {
     setEnteredGroup(event.target.value);
   };
 
+  const saveContact = async (contact) => {
+    const response = await axios
+      .post("http://localhost:3000/contacts", contact)
+      .catch((err) => {
+        console.log("Error : ", err);
+      });
+    // console.log(response.data);
+    dispatch(addContact(response.data));
+    navigate("/contacts");
+  };
+
   const submitHandler = (event) => {
     event.preventDefault();
+    const unique_id = uuid();
     let contact = {
+      id: unique_id,
       name: enteredName,
-      contact: enteredContact,
+      phone: enteredContact,
       email: enteredEmail,
       group: enteredGroup,
     };
-    console.log(contact);
+    // console.log(contact);
+    // Send post call to backend api for creating contact and dispatch addContact action with response.data
+    saveContact(contact);
   };
   return (
     <section className={classes["main-area"]}>
